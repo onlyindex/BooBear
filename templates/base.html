@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        <meta charset="UTF-8">
+        <!--移动设备优先 屏幕缩放比例自适应-->
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no">
+        <!--收藏夹图标-->
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='static/images/icon.jpg') }}">
+
+
+        <title>{% block title %}boobear{% endblock %}</title>
+        {% block styles %}
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/phone.css') }}">
+            <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        {% endblock %}
+    {% endblock %}
+</head>
+<body class="app m_container_max">
+{% block body %}
+    <nav>
+        {% block nav %}
+            <div class="m_top_bar m_container_max">
+                <div class="nav_top">
+                    <div class="nav_left">
+                        {% block nav_left %}
+                            {# <a href="/"><img class="nav_logo3" src="{{ url_for('static',filename="/static/images/logo.png") }}"></a>#}
+                            {# <i class="m-font-return"></i>#}
+                        {% endblock %}
+                    </div>
+                    <div class="nav_search nav_title nav_main">
+                        {% block nav_main %}
+                            <form id="search_from" action="/search" method="post" class="nt-search">
+                                <div class="inner ll">
+                                    <i class="button"></i>
+                                    <input id="search_text" name="search_text" class="textarea" type="search"
+                                           placeholder="大家都在搜：银河补习班333 enter键搜索">
+                                </div>
+                            </form>
+                        {% endblock %}
+                    </div>
+                    <div class="nav_right">
+                        {% block nav_right %}
+                            <div class="lite-icon-msg">
+                                <em class="m-bubble-red" style="display: none;">14</em>
+                            </div>
+                            <div class="lite-icon-new">
+                            </div>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    </nav>
+    <main>
+        {% for message in get_flashed_messages(with_categories=True) %}
+            <div class="flash alert alert-{{ message[0] }}" id="close" role="alert">
+                <button class="close" onclick="turnFoff('close')">&times;</button>
+                {{ message[1] }}
+            </div>
+        {% endfor %}
+
+        {% block content %}
+            <div class="main_wrap m_container_max">
+
+
+                <div class="icon_edit">
+                    <i class="lite-icon-new"></i>
+                </div>
+
+            </div>
+
+        {% endblock %}
+
+    </main>
+    <footer>
+        {% block footer %}
+            <div class="m_bottom_bar m_container_max">
+                <div class="m_box">
+                    <div id="auth" class="m_box m_box_center m_box_center_a">
+                        <a class="avatar" href="/signup">
+                            <img class="avatar" src="{{ url_for('static',filename='static/images/icon.jpg') }}"></a>
+                        <div class="inner">游客，欢迎！
+                            <a href="/login" class="l">[登录]</a><a href="http://bgm.tv/signup" class="l">[注册]</a>
+                            <br>2019年7月23日, 阅读绘本2333本。
+                        </div>
+                    </div>
+                    <div class="m_box m_box_center m_box_center_a">
+                        <a href="#" class="top">探索</a>
+{#                        <a><i></i><span></span></a>#}
+                    </div>
+                    <div class="m_box m_box_center m_box_center_a">
+                        <a href="#" class="top">绘本馆</a>
+                    </div>
+                    <div class="m_box m_box_center m_box_center_a">
+                        <a href="#" class="top">书架</a></div>
+                    <div class="m_box m_box_center m_box_center_a">
+                        <a href="#" class="top">社团</a>
+                    </div>
+                    <div id="logo" class="m_box m_box_center m_box_center_a">
+                        <a href="#">
+                            <img class="nav_logo" src="{{ url_for('static',filename="/static/images/bg_musume.png") }}">
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+        {% endblock %}
+
+    </footer>
+    {% block scripts %}
+    {% endblock %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,501 @@
+html {
+    font: 16px Helvetica, Arial, BlinkMacSystemFont, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
+    word-break: break-word;
+}
+
+/*移动和pc端通用配置*/
+
+* {
+    margin: 0 auto; /*网页居中*/
+    padding: 0; /*网页边距*/
+    box-sizing: border-box;
+
+}
+
+body {
+    background: #DFE2EE;
+    line-height: 1;
+    color: #222;
+    overflow-y: scroll;
+    -webkit-font-smoothing: antialiased; /*移动端抗锯齿渲染*/
+    text-rendering: optimizeLegibility; /*侧重文本可读性*/
+}
+/*:root {*/
+/*    --mainFontSize: 16px;*/
+/*    --subFontSize: 14px;*/
+/*    --titleFontSize: 18px;*/
+/*    --smallFontSize: 12px;*/
+/*    --themeColor: #ff6fa2;*/
+/*    --subColor: #666;*/
+/*    --infoColor: #999;*/
+/*    --mainColor: #333;*/
+/*}*/
+
+a {
+    text-decoration: none;
+    color: #0084B4;
+}
+
+
+a.l, a.l:link, a.l:visited {
+    color: #0084B4;
+    border: 0;
+    text-decoration: none;
+}
+
+a.l:active {
+    color: #F09199;
+    border: 0;
+    text-decoration: none;
+}
+
+ul, li {
+    list-style: none;
+}
+
+
+
+
+.card {
+    background: #fff;
+    padding: 12px;
+    border: 0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    float: left;
+
+    margin-bottom: .5625rem;
+}
+
+
+.card h2.sideTitle {
+    font-size: 14px;
+    color: #2F5797;
+    background: #DFE2EE url("../static/images/ico_jj.png") no-repeat 5px 50%;
+    margin: 0 0 10px 0;
+    padding: 5px 0 5px 30px;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*顶部导航左侧*/
+
+.m_top_bar {
+    height: 5.25rem;
+    background: #555199 repeat-x;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.m_top_bar .nav_left, .m_top_bar .nav_main, .m_top_bar .nav_right, .m_top_bar .nav_search, .m_top_bar .nav_title {
+    position: absolute;
+    line-height: 2.75rem;
+}
+
+/*导航左侧*/
+
+.m_top_bar .nav_left {
+    left: .75rem;
+    z-index: 1;
+    position: absolute;
+    line-height: 2.75rem;
+    font-size: 1.75rem;
+    color: #fff;
+}
+
+.m_top_bar .nav_top {
+    padding: 0 .625rem;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 .625rem;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+
+/*导航搜索框*/
+
+.m_top_bar .nav_search {
+    top: 0;
+    left: 2.75rem;
+    right: 5.375rem;
+    line-height: 2.5rem;
+    position: absolute;
+
+}
+
+
+#search_from .inner {
+    padding: 1px;
+    margin: .5rem 0;
+    -moz-opacity: .9;
+    opacity: .9;
+    filter: alpha(opacity=90);
+    display: inline-flex;
+    background: #fff;
+    width: 100%;
+    height: 2rem;
+    border-radius: 4px
+
+}
+
+#search_from {
+    position: relative;
+    width: 100%;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+
+#search_from input.textarea {
+    /*outline-style: none ; */
+    /*取消外边框*/
+    outline: 0;
+    /*;none去掉输入框轮廓*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /*清除浏览器默认的样式 */
+    font-size: .5rem;
+    line-height: normal;
+    /* 光标问题*/
+    background: transparent;
+    /*背景框透明*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    border: 0 none;
+    /*input边框取消*/
+    color: #333;
+    margin-left: -32px;
+    text-indent: 0;
+    resize: none;
+
+}
+
+/*input::-webkit-input-placeholder{
+    color:#0F0;
+!*默认文字颜色*!
+}*/
+
+#search_from input.textarea:focus {
+    /*
+    border-color: #66afe9;
+    */
+    outline: 0;
+    /*!*-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);*!
+    !*box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)*!*/
+}
+
+#search_from i.button {
+    width: 42px;
+    height: 42px;
+}
+
+#search_from i.button::before {
+    width: 24px;
+    height: 24px;
+    margin: 8px;
+    content: " ";
+    display: block;
+    background: url("../static/images/search.png") no-repeat;
+    padding-left: 10px;
+    padding-right: 8px;
+    display: inline-block;
+}
+
+input#search_text {
+    padding-left: 1.875rem;
+}
+
+
+/*导航右侧*/
+
+.m_top_bar .nav_right {
+    right: .9375rem;
+    position: absolute;
+    line-height: 2.75rem;
+    z-index: 100;
+}
+
+
+/*导航右侧消息*/
+
+.m_top_bar .nav_right .lite-icon-msg {
+    color: #fff;
+    font-size: 18px;
+    right: 2.375rem;
+    position: absolute;
+    margin-top: -42px;
+}
+
+.m_top_bar .lite-icon-msg:before {
+    content: "@";
+}
+
+.m_top_bar .m-bubble-red {
+    font-size: 10px;
+    font-weight: 700;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ff5b36;
+    color: #fff;
+    text-align: center;
+    box-sizing: border-box;
+
+
+    position: absolute;
+    top: .25rem;
+    left: .875rem;
+    line-height: 1.0625rem;
+}
+
+/*导航右侧发布*/
+
+.m_top_bar .nav_right .lite-icon-new {
+    right: 0;
+    position: absolute;
+    color: #282f3c;
+    font-size: 1.25rem;
+    margin-top: -38px;
+
+}
+
+
+.lite-icon-new::before {
+    content: "";
+    background-image: url("../static/images/new.png");
+    display: inline-block;
+    background-repeat: no-repeat;
+    margin-left: 15px;
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+}
+
+/*.nav_top_bg{*/
+/*    !*background: #DFE2EE url("../static/images/bg_title.png") repeat-x;*!*/
+/*}*/
+
+/*div#page_content {*/
+/*    background: #DFE2EE url("../static/images/bg_title.png") repeat-x;*/
+/*}*/
+
+
+
+
+.icon_edit {
+    position: fixed;
+    bottom: 3rem;
+    right: 1rem;
+    width: 3.75rem;
+    height: 3.75rem;
+    line-height: 3.75rem;
+    text-align: center;
+    border-radius: 50%;
+    opacity: .98;
+    background-color: #1b9af4;
+    -webkit-box-shadow: 0 6px 30px 0 rgba(52, 96, 183, .28);
+    box-shadow: 0 6px 30px 0 rgba(52, 96, 183, .28);
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.nav_logo2 {
+    width: 1.625rem;
+    height: 2.5rem;
+    background-image: url("../static/images/logo.png");
+    background-position: 0 .75rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+
+
+
+
+/*底部导航*/
+
+.m_bottom_bar {
+    background: #555199 repeat-x;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+}
+
+.m_bottom_bar a {
+    padding: 5px 10px;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.m_box {
+    height: 46px;
+    display: flex;
+    align-items: center;
+}
+
+.m-box {
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.m_box_center {
+
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.m_box_center_a {
+
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.m_box_col {
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+    display: block;
+    min-width: 0;
+}
+
+.nav_logo {
+    position: fixed;
+    bottom: 0;
+    margin-right: 0;
+    margin-left: -120px;
+
+}
+
+
+
+img.avatar {
+    background-color: #FFF;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 1px;
+}
+
+
+#auth .inner {
+    display: none;
+
+}
+
+
+#auth {
+    font-size: 12px;
+    color: #FFF;
+}
+
+#auth a.l {
+    color: #EEE;
+}
+
+
+
+
+
+
+
+/*基础base.html适配*/
+@media screen and(min-width: 414px) and (max-width: 769px) {
+    /*414-769px手机简单适配*/
+    .m_container_max {
+        width: 100%;
+    }
+
+    #search_from input.textarea::-webkit-input-placeholder {
+        /* WebKit browsers */
+        line-height: 0.44rem;
+        /*placeholder*/
+    }
+
+    #search_from input.textarea:focus {
+        color: #8b8791;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    html {
+        font-size: 20px;
+    }
+
+    /*769px以上电脑端简单适配*/
+    .m_container_max {
+
+        width: 750px;
+    }
+
+    #auth .inner {
+        display: inline-block;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

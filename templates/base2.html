@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        <meta charset="UTF-8">
+        <!--移动设备优先 屏幕缩放比例自适应-->
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no">
+        <!--收藏夹图标-->
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='static/images/icon.jpg') }}">
+
+
+        <title>{% block title %}boobear{% endblock %}</title>
+        {% block styles %}
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/phone2.css') }}">
+            <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        {% endblock %}
+    {% endblock %}
+</head>
+<body class="app m_container_max">
+{% block body %}
+    <nav>
+        {% block nav %}
+            <div class="m_top_bar m_container_max">
+                <div class="m_top_bar_content">
+                    <i class="back iconpic"></i>
+                    <img class="mobile_logo" src="{{ url_for('static',filename='static/images/logo.png') }}">
+                    <i class="share iconpic"></i></div>
+            </div>
+        {% endblock %}
+    </nav>
+    <main>
+        {% for message in get_flashed_messages(with_categories=True) %}
+            <div class="flash alert alert-{{ message[0] }}" id="close" role="alert">
+                <button class="close" onclick="turnFoff('close')">&times;</button>
+                {{ message[1] }}
+            </div>
+        {% endfor %}
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+    <footer>
+        {% block footer %}
+
+
+            <div class="m_bottom_bar m_container_max">
+                <div class="m_box">
+                    <div id="auth" class="m_box_col m_box_center m_box_center_a">
+                            <img class="avatar" src="{{ url_for('static',filename='static/images/icon.jpg') }}">
+                            <a>onlyindex</a>
+
+                    </div>
+                    <div id="explore" class="m_box_col m_box_center m_box_center_a m-cur">
+                        <i class="fa fa-life-ring fa-lg" aria-hidden="true"></i>
+                        <a>探索</a>
+
+                    </div>
+                    <div id="library"class="m_box_col m_box_center m_box_center_a">
+                        <i class="fa fa-book fa-lg" aria-hidden="true"></i>
+                        <a>绘本</a>
+                    </div>
+                    <div id="shelf" class="m_box_col m_box_center m_box_center_a">
+                        <i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>
+                        <a>书架</a>
+                    </div>
+                    <div id="m_bottom_bg" class="m_box_col m_box_center m_box_center_a">
+                        <img src="{{ url_for('static',filename="/static/images/bg_musume.png") }}">
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+
+    </footer>
+    {% block scripts %}
+    {% endblock %}
+{% endblock %}
+</body>
+</html>

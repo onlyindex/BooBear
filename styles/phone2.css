@@ -1,0 +1,243 @@
+html {
+    font: 16px Helvetica, Arial, BlinkMacSystemFont, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
+    word-break: break-word;
+}
+
+/*移动和pc端通用配置*/
+
+* {
+    margin: 0 auto; /*网页居中*/
+    padding: 0; /*网页边距*/
+    box-sizing: border-box;
+
+}
+
+body {
+    background: #DFE2EE;
+    line-height: 1;
+    color: #222;
+    overflow-y: scroll;
+    -webkit-font-smoothing: antialiased; /*移动端抗锯齿渲染*/
+    text-rendering: optimizeLegibility; /*侧重文本可读性*/
+}
+
+a {
+    text-decoration: none;
+    color: #0084B4;
+}
+
+
+a.l, a.l:link, a.l:visited {
+    color: #0084B4;
+    border: 0;
+    text-decoration: none;
+}
+
+a.l:active {
+    color: #F09199;
+    border: 0;
+    text-decoration: none;
+}
+
+ul, li {
+    list-style: none;
+}
+
+/*顶部导航*/
+
+.m_top_bar {
+    /*height: 5.25rem;*/
+    height: 2rem;
+    background: #555199 repeat-x;
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*-webkit-box-sizing: border-box;*/
+    /*box-sizing: border-box;*/
+    width: 100%;
+}
+
+.m_top_bar_content{
+    justify-content: center!important;position: relative;
+    display: flex;
+    width: 100%;
+    height: 44px;
+    align-items: center;
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    transition: -webkit-transform .2s ease .2s;
+    transition: transform .2s ease .2s;
+    transition: transform .2s ease .2s,-webkit-transform .2s ease .2s;
+    z-index: 100;
+}
+
+.m_top_bar .m_top_bar_content .back {
+    left: .05rem;
+    background-image: url("../static/images/back.png");
+}
+.m_top_bar .m_top_bar_content .share {
+    right: .1rem;
+    background-image: url("../static/images/share.png");
+}
+
+.m_top_bar .m_top_bar_content .iconpic {
+    display: inline-block;
+    color: #333;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 1.5rem;
+    height: 1.5rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.m_top_bar .mobile_logo {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+
+
+/*底部导航*/
+
+.m_bottom_bar {
+    background: #fff no-repeat;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: inset 0 1px 0 0 #fff, 0 -2px 2px -1px rgba(0,0,0,.15);
+    height: 3.3125rem;
+}
+
+.m_bottom_bar div{
+    margin: .25rem 0 0 0
+}
+
+
+.m_box {
+    display: flex;
+    display: -ms-flexbox;
+}
+
+.m_box_center {
+
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.m_box_center_a{
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+}
+.m_box_col {
+    -ms-flex: 1;
+    flex: 1;
+    flex-direction: column;
+}
+.m_box_col a{
+    font-size: .625rem;
+    margin: .25rem 0 0 0;
+    color: #636363;
+}
+.m_box_col i.fa{
+    width: 1.5rem;
+    height: 1.5rem;
+    vertical-align: top;
+}
+#m_bottom_bg img {
+    position: fixed;
+    /*bottom: 3.3125rem;*/
+    bottom: 0;
+}
+#auth img.avatar {
+    background-color: #FFF;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    padding: 1px;
+    width: 27px;
+    height: 27px;
+}
+
+
+
+
+
+
+
+
+
+/*基础base.html适配*/
+@media screen and(min-width: 414px) and (max-width: 769px) {
+    /*414-769px手机简单适配*/
+    .m_container_max {
+        width: 100%;
+    }
+
+    #search_from input.textarea::-webkit-input-placeholder {
+        /* WebKit browsers */
+        line-height: 0.44rem;
+        /*placeholder*/
+    }
+
+    #search_from input.textarea:focus {
+        color: #8b8791;
+    }
+    /*#m_bottom_bg img{*/
+    /*    height: 5%;*/
+    /*}*/
+}
+
+@media screen and (min-width: 768px) {
+    html {
+        font-size: 20px;
+    }
+
+    /*769px以上电脑端简单适配*/
+    .m_container_max {
+
+        width: 750px;
+    }
+
+
+}
+
+
+
+/*position: absolute;*/
+/*    bottom: -.53333rem;*/
+/*    height: 1.33333rem;*/
+/*    width: 100%;*/
+/*    -webkit-border-radius: .98667rem .98667rem 0 0;*/
+/*    -moz-border-radius: .98667rem .98667rem 0 0;*/
+/*    border-radius: .98667rem .98667rem 0 0;*/
+/*    overflow: hidden;*/
+/*    background: -webkit-linear-gradient(left,#65ccff,#8da9ff);*/
+/*    background: -webkit-gradient(linear,left top,right top,from(#65ccff),to(#8da9ff));*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
