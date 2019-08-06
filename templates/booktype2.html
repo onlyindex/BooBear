@@ -1,0 +1,477 @@
+{% extends 'base2.html' %}
+{% block title %}booktype{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <style>
+        .hide {
+            display: none;
+        }
+
+        ul li {
+            float: left;
+            padding: 3px 0 3px 10px;
+        }
+
+
+        ul li a.focus {
+        {#background: #F09199;#} background: #6AC9FF;
+            color: #FFF;
+            margin: 0 0;
+            padding: 3px 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+
+        }
+
+        ul li a {
+            display: block;
+        }
+
+        .m_text_cut {
+            display: inline-block;
+        {#max-width: 12rem;#} color: #333;
+            font-style: normal;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            background-repeat: no-repeat;
+            background-size: cover;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card {
+            background: #FFFFFF;
+            padding: .26667rem;
+        }
+
+        .book_sort {
+            top: 0;
+            right: 0;
+            left: 0;
+            min-height: 5.6rem;
+            font-size: 1rem;
+            color: #a5adb5;
+            position: relative;
+            background-color: #fff;
+        }
+
+
+        {#分页#}
+
+        div.page_inner {
+            padding: 10px 0;
+        }
+
+        a.p_cur {
+            font-style: normal;
+            margin-right: 4px;
+            font-size: 12px;
+            color: #FFF;
+            font-weight: normal;
+            padding: 4px 8px;
+            display: inline;
+            background: #F09199;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        a.p, a.p:active, a.p:visited {
+            padding: 4px 8px;
+            margin-right: 4px;
+            font-size: 12px;
+            color: #555;
+            background: #FAFAFA;
+            text-decoration: none;
+            font-weight: normal;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .clearit:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+
+        {#书的样式#}
+        .book {
+            display: inline-flex;
+        {#padding: 12px;#} padding: .26667rem;
+            background: #fff;
+        }
+
+        .book_img {
+            display: inline-block;
+            width: 120px;
+            height: 160px;
+            margin-left: 0px;
+            margin-right: .26667rem;
+        }
+
+        .book_content {
+            display: inline-block;
+            margin-left: 0px;
+        }
+
+
+        .book_img img {
+            background-color: #FFF;
+            margin-bottom: 5px;
+            padding: 2px;
+            border-top: 1px solid #C7C7C9;
+            border-left: 1px solid #A9A9AB;
+            border-right: 1px solid #A9A9AB;
+            border-bottom: 1px solid #858486;
+            width: 100px;
+            height: 145px;
+        }
+
+        i.ico_love {
+            background: url("../static/images/ico_list_love.gif") no-repeat 0 0;
+            padding: 0 0 0 13px;
+            font-size: 10px;
+            line-height: 10px;
+            color: #AAA;
+        }
+
+        span.ico_love {
+            background: url("../static/images/ico_list_love.gif") no-repeat;
+            background-size: cover;
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            position: absolute;
+            top: 13px;
+            right: 5px;
+        }
+
+        .starsinfo {
+            background: transparent url("../static/images/star_s.gif") no-repeat;
+            display: inline-block;
+            height: 11px;
+            margin: 0;
+            width: 50px;
+        }
+
+        .sstars10 {
+            background-position: left 1px;
+        }
+
+        p.book_tag {
+            color: #AAAAAA;
+        }
+
+
+        .book_tag span {
+            font-size: 12px;
+            padding: 4px;
+            color: #FCFAF9;
+            background: #009eec;
+            border: 0;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .book_title, .book_info, .book_rate, .book_tag {
+            margin-bottom: 12px;
+            margin-top: 12px;
+        }
+
+        ul.book_order {
+            background: #fff;
+            padding: 12px 0px 12px 0px;
+            margin: 12px 0px 12px 0px;
+            width: 100%;
+            position: relative;
+            height: 40px;
+        }
+
+        ul.book_order li.active a {
+            color: #ff6fa2;
+        }
+
+        ul.book_order li.active :after {
+            content: " ";
+            width: 20px;
+            height: 4px;
+            background-color: #ff6fa2;
+            position: absolute;
+            bottom: 0px;
+            left: 15px;
+            text-align: center;
+        }
+
+        .icon_playlist_play {
+            width: 25px;
+            height: 25px;
+            background-image: url("../static/images/icon-playlist-play.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: inline-block;
+            position: absolute;
+            right: 5px;
+        }
+    p.book_info {
+    font-size: 12px;
+    color: #9b9b9b;
+}
+    a.book_title {
+    font-size: 18px;
+}
+
+    </style>
+
+{% endblock %}
+{% block nav %}
+    <div class="m_top_bar m_container_max">
+        <div class=" m_box m_box_center m_box_center_a m_top_bar_content">
+            <i class="back iconpic"></i>
+            <i class=" title m_text_cut">索引</i>
+            <i class="share iconpic"></i>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    {{ super() }}
+    <div class="crumb hide"><em>当前位置</em> :
+        <a href="/lib" title="绘本馆">绘本馆</a>&gt;<a href="/lib" title="绘本">英国</a>&gt;<a href="#" title="3岁">3岁 </a>&gt;
+        <strong>第1页</strong>
+    </div>
+    <div class="book_sort">
+        <ul class="card_list sort_class_list m_container_max clearit">
+            <li><a href="#" class="focus">语言</a></li>
+            <li><a href="#">中文</a></li>
+            <li><a href="">英文</a></li>
+            <li><a href="">日文</a></li>
+        </ul>
+        <ul class="clearit">
+            <li><a href="" class="focus">类型</a></li>
+            <li><a href="">儿歌</a></li>
+            <li><a href="">诗歌</a></li>
+            <li><a href="">绘本</a></li>
+            <li><a href="">自然拼读</a></li>
+            <li><a href="">分级读物</a></li>
+            <li><a href="">章节</a></li>
+            <li><a href="">小说</a></li>
+        </ul>
+        <ul class="clearit">
+            <li><a href="" class="focus">年龄</a></li>
+            <li><a href="">0-3Crawl</a></li>
+            <li><a href="">2-5 Stand </a></li>
+            <li><a href="">4-6 Walk</a></li>
+            <li><a href="">5-7 run </a></li>
+        </ul>
+        <ul class="clearit">
+            <li><a href="" class="focus">主题</a></li>
+            <li><a href="">认识自我|语言智能|身体认知|自我认知|生命安全 |保持健康自律生活|习惯品格|情绪管理</a></li>
+            <li><a href="">关心别人|掌控社会规则|和有趣的人做有趣的事情|了解家庭学校生活|规律秩序|主观游戏规则 |人物偶像励志成长人际互动/交往/关系/人际智能/友谊</a></li>
+            <li><a href="">阅读世界|熟悉客观规律|探索心灵成长|身体和心灵总有一个在路上|时间|节日|空间 物理 精神|自然(动植物)|自然观察|自然科普|动物百科|天文地理|科学探索|
+                科幻
+                |地理|化学|物理|历史|人文|想象冒险|神话|童话|寓言|哲学|艺术|</a></li>
+            <li><a href="">发现兴趣|掌握一门技术服务社会|社会生活|工作||科技|占星|数学|互联网编码|逻辑推理|心理|画画|设计|音乐|摄影|法律|建筑|医学|工艺爱好 </a>
+            </li>
+        </ul>
+        <ul class="clearit">
+            <li><a href="/" class="focus">字母</a></li>
+            <li><a href="#">A</a></li>
+            <li><a href="/">B</a></li>
+            <li><a href="">C</a></li>
+            <li><a href="">D</a></li>
+            <li><a href="">E</a></li>
+            <li><a href="">F</a></li>
+            <li><a href="">G</a></li>
+            <li><a href="">H</a></li>
+            <li><a href="">I</a></li>
+            <li><a href="">J</a></li>
+            <li><a href="">K</a></li>
+            <li><a href="">L</a></li>
+            <li><a href="">M</a></li>
+            <li><a href="">N</a></li>
+            <li><a href="">O</a></li>
+            <li><a href="">P</a></li>
+            <li><a href="">Q</a></li>
+            <li><a href="">R</a></li>
+            <li><a href="">S</a></li>
+            <li><a href="">T</a></li>
+            <li><a href="">U</a></li>
+            <li><a href="">V</a></li>
+            <li><a href="">W</a></li>
+            <li><a href="">X</a></li>
+            <li><a href="">Y</a></li>
+            <li><a href="">Z</a></li>
+        </ul>
+    </div>
+    <ul class="book_order" class="clearit">
+        <li class="active"><a href="#">评分</a></li>
+        <li><a href="#">人气</a></li>
+        <li><a href="">笔记</a></li>
+    </ul>
+    <section class="card_list">
+        <div class="card">
+            <div class="book">
+                <a class="book_img" href="/lib/book/1"><img
+                        src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}"></a>
+                <div class="book_content">
+                    <a class="book_title" href="/lib/book/1">Peppa’s First Sleepover</a>
+                    <p class="book_info">Peppa Pig / Ladybird / 2016-7-7 (2018-9-1再发售)</p>
+                    <div class="book_rate">
+                        <i class="starsinfo sstars10"></i>
+                        <small>9.5</small>
+                        <i class="ico_love" title="3人收藏">3</i>
+                        <i class="fa fa-file-text-o" aria-hidden="true">233</i>
+                    </div>
+                    <p class="book_tag">
+                        <span value=" ">🦋个人成长</span>
+                        <span value=" ">👪家庭生活</span>
+                        <span value=" ">👪家庭生活</span>
+                    </p>
+                </div>
+                <span class="icon_playlist_play"></span>
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="book">
+                <a class="book_img" href="/lib/book/1"><img
+                        src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}"></a>
+                <div class="book_content">
+                    <a class="book_title" href="/lib/book/1">Peppa’s First Sleepover</a>
+                    <p class="book_info">Peppa Pig / Ladybird / 2016-7-7 (2018-9-1再发售)</p>
+                    <div class="book_rate">
+                        <i class="starsinfo sstars10"></i>
+                        <small>9.5</small>
+                        <i class="ico_love" title="3人收藏">3</i>
+                        <i class="fa fa-file-text-o" aria-hidden="true">233</i>
+                    </div>
+                    <p class="book_tag">
+                        <span value=" ">🦋个人成长</span>
+                        <span value=" ">👪家庭生活</span>
+                        <span value=" ">👪家庭生活</span>
+                    </p>
+                </div>
+                <span class="icon_playlist_play"></span>
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="book">
+                <a class="book_img" href="/lib/book/1"><img
+                        src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}"></a>
+                <div class="book_content">
+                    <a class="book_title" href="/lib/book/1">Peppa’s First Sleepover</a>
+                    <p class="book_info">Peppa Pig / Ladybird / 2016-7-7 (2018-9-1再发售)</p>
+                    <div class="book_rate">
+                        <i class="starsinfo sstars10"></i>
+                        <small>9.5</small>
+                        <i class="ico_love" title="3人收藏">3</i>
+                        <i class="fa fa-file-text-o" aria-hidden="true">233</i>
+                    </div>
+                    <p class="book_tag">
+                        <span value=" ">🦋个人成长</span>
+                        <span value=" ">👪家庭生活</span>
+                        <span value=" ">👪家庭生活</span>
+                    </p>
+                </div>
+                <span class="icon_playlist_play"></span>
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="book">
+                <a class="book_img" href="/lib/book/1"><img
+                        src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}"></a>
+                <div class="book_content">
+                    <a class="book_title" href="/lib/book/1">Peppa’s First Sleepover</a>
+                    <p class="book_info">Peppa Pig / Ladybird / 2016-7-7 (2018-9-1再发售)</p>
+                    <div class="book_rate">
+                        <i class="starsinfo sstars10"></i>
+                        <small>9.5</small>
+                        <i class="ico_love" title="3人收藏">3</i>
+                        <i class="fa fa-file-text-o" aria-hidden="true">233</i>
+                    </div>
+                    <p class="book_tag">
+                        <span value=" ">🦋个人成长</span>
+                        <span value=" ">👪家庭生活</span>
+                        <span value=" ">👪家庭生活</span>
+                    </p>
+                </div>
+                <span class="icon_playlist_play"></span>
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="book">
+                <a class="book_img" href="/lib/book/1"><img
+                        src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}"></a>
+                <div class="book_content">
+                    <a class="book_title" href="/lib/book/1">Peppa’s First Sleepover</a>
+                    <p class="book_info">Peppa Pig / Ladybird / 2016-7-7 (2018-9-1再发售)</p>
+                    <div class="book_rate">
+                        <i class="starsinfo sstars10"></i>
+                        <small>9.5</small>
+                        <i class="ico_love" title="3人收藏">3</i>
+                        <i class="fa fa-file-text-o" aria-hidden="true">233</i>
+                    </div>
+                    <p class="book_tag">
+                        <span value=" ">🦋个人成长</span>
+                        <span value=" ">👪家庭生活</span>
+                        <span value=" ">👪家庭生活</span>
+                    </p>
+                </div>
+                <span class="icon_playlist_play"></span>
+            </div>
+
+        </div>
+        <div class="card">
+            <div class="book">
+                <a class="book_img" href="/lib/book/1"><img
+                        src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}"></a>
+                <div class="book_content">
+                    <a class="book_title" href="/lib/book/1">Peppa’s First Sleepover</a>
+                    <p class="book_info">Peppa Pig / Ladybird / 2016-7-7 (2018-9-1再发售)</p>
+                    <div class="book_rate">
+                        <i class="starsinfo sstars10"></i>
+                        <small>9.5</small>
+                        <i class="ico_love" title="3人收藏">3</i>
+                        <i class="fa fa-file-text-o" aria-hidden="true">233</i>
+                    </div>
+                    <p class="book_tag">
+                        <span value=" ">🦋个人成长</span>
+                        <span value=" ">👪家庭生活</span>
+                        <span value=" ">👪家庭生活</span>
+                    </p>
+                </div>
+                <span class="icon_playlist_play"></span>
+            </div>
+
+        </div>
+        <div class="page_inner">
+            <a href="?page=1" class="p_cur">1</a>
+            <a href="?page=2" class="p">2</a>
+            <a href="?page=3" class="p">3</a>
+            <a href="?page=4" class="p">4</a>
+            <a href="?page=5" class="p">5</a>
+            <a href="?page=6" class="p">6</a>
+            <a href="?page=7" class="p">7</a>
+            <a href="?page=8" class="p">8</a>
+            <a href="?page=9" class="p">9</a>
+            <a href="?page=10" class="p">10</a>
+            <a href="?page=2" class="p">››</a>
+            <a href="?page=2" class="p">233</a>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}
