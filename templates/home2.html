@@ -1,10 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base2.html' %}
+{% block title %}home2{% endblock %}
 
-</body>
-</html>
+{% block styles %}
+    {{ super() }}
+    <style>
+.m_main_bar {
+    top: 0;
+    right: 0;
+    left: 0;
+    font-size: 1rem;
+    color: #a5adb5;
+    position: relative;
+    {#相对位置top为0#}
+    line-height: 2.75rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+
+
+
+.m_main_bar .nav_item {
+    white-space: nowrap;
+    -webkit-box-sizing: border-box;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    /* position: relative; */
+    {#padding-bottom: .9rem;#}
+    {#margin-bottom: -.9rem;#}
+    text-align: center;
+    {#padding: 0 .5rem;#}
+}
+
+
+.m_main_bar .nav_item .item_li.cur {
+    color: #000;
+}
+
+.m_main_bar .nav_item .item_li {
+    display: inline-block;
+    margin: 0 .75rem;
+}
+
+.m_main_bar .nav_item .item_li span {
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+/*.m_top_nav .nav_top_main .nav_item .item_li.cur span::after {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    left: 50%;*/
+/*    transform: translate(-50%,0);*/
+/*    bottom: .1875rem;*/
+/*    width: 1.5rem;*/
+/*    height: .1875rem;*/
+/*    border-radius: .125rem;*/
+/*    background-color: #FF8200;*/
+/*}*/
+
+.m_main_bar .nav_item .item_li.cur span em {
+    display: block;
+    position: absolute;
+    bottom: -.5rem;
+    left: 50%;
+    width: .875rem;
+    margin-left: -.4375rem;
+    border-top: 2px solid #282f3c;
+}
+
+    </style>
+{% endblock %}
+{% block content %}
+    {{ super() }}
+    <div class="m_main_bar m_container_max">
+            <ul class="nav_item">
+                <li class="item_li cur">
+                    <span>关注<em></em></span>
+                </li>
+                <li class="item_li">
+                    <span>发现<em></em></span>
+                </li>
+            </ul>
+    </div>
+    <div>我的关注列表动态</div>
+{% endblock %}

@@ -1,10 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}signup{% endblock %}
 
-</body>
-</html>
+{% block styles %}
+    {{ super() }}
+<style>
+/*#登录框 #*/
+
+form#loginForm input {
+    border: 1px solid #DDD;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    margin-bottom: 12px;
+    padding: 10px;
+    width: 245px;
+}
+
+#loginForm {
+    width: 266px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+button {
+
+    /*#background: #18A7FA
+;
+    background: #ffaec9
+;*/
+
+
+    background: #fff;
+    border: 1px solid #0096fa;
+    color: #0096fa;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 150%;
+    padding: 5px 25px;
+    /*
+        #border: 0px;
+        #border: none;
+        */
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+    float: right;
+    text-align: center;
+}
+
+div#login_auth {
+    margin-bottom: 12px;
+}
+
+div#login_auth a {
+    margin: 12px 0px 12px 0px;
+}
+
+
+
+</style>
+{% endblock %}
+{% block content %}
+    {{ super() }}
+
+    <div class="card" id="login">
+        <h2 class="sideTitle">登录</h2>
+        <form id="loginForm" method="post" name="login" action="/login">
+            <input id="email" name="email" type="text" placeholder="email"><br>
+            <input id="password" name="password" type="password" placeholder="password"><br>
+            <div id="login_auth">
+                <a href="/reset_password" class="l">忘记密码?</a>
+                <button class="submit_button" value="登录" name="login_submit" type="submit">login
+                </button>
+            </div>
+
+        </form>
+    </div>
+{% endblock %}

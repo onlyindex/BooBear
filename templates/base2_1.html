@@ -12,7 +12,7 @@
 
         <title>{% block title %}boobear{% endblock %}</title>
         {% block styles %}
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/phone2.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/phone2_1.css') }}">
             <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         {% endblock %}
     {% endblock %}
@@ -20,15 +20,16 @@
 <body class="app m_container_max">
 {% block body %}
     <nav>
-        {% block nav %}
-            <div class="m_top_bar m_container_max">
-                <div class=" m_box m_box_center m_box_center_a m_top_bar_content">
+        <div class="m_top_bar m_container_max">
+            <div class=" m_box m_box_center m_box_center_a m_top_bar_content">
+                {% block nav %}
                     <i class="back iconpic"></i>
                     <i class=" mobile_logo iconpic"></i>
                     <i class="share iconpic"></i>
-                </div>
+                {% endblock %}
+
             </div>
-        {% endblock %}
+        </div>
     </nav>
     <main>
         {% for message in get_flashed_messages(with_categories=True) %}
@@ -37,11 +38,9 @@
                 {{ message[1] }}
             </div>
         {% endfor %}
+    {% block page_content %}
+        {%  endblock %}
 
-            <div class="m_main m_container_max">
-                {% block content %}
-                {% endblock %}
-            </div>
 
 
     </main>
@@ -52,22 +51,22 @@
             <div class="m_bottom_bar m_container_max">
                 <div class="m_box">
                     <div id="auth" class="m_box_col m_box_center m_box_center_a">
-                            <img class="avatar" src="{{ url_for('static',filename='static/images/icon.jpg') }}">
-                            <a>我</a>
+                        <img class="avatar" src="{{ url_for('static',filename='static/images/icon.jpg') }}">
+                        <a>我</a>
 
-                    </div>
-                    <div id="explore" class="m_box_col m_box_center m_box_center_a m-cur">
-                        <i class="fa fa-life-ring fa-lg" aria-hidden="true"></i>
-                        <a>探索</a>
-
-                    </div>
-                    <div id="library"class="m_box_col m_box_center m_box_center_a">
-                        <i class="fa fa-book fa-lg" aria-hidden="true"></i>
-                        <a>绘本</a>
                     </div>
                     <div id="shelf" class="m_box_col m_box_center m_box_center_a">
                         <i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>
                         <a>书架</a>
+                    </div>
+
+                    <div id="library" class="m_box_col m_box_center m_box_center_a">
+                        <i class="fa fa-book fa-lg" aria-hidden="true"></i>
+                        <a>绘本馆</a>
+                    </div>
+                    <div id="explore" class="m_box_col m_box_center m_box_center_a m-cur">
+                        <i class="fa fa-life-ring fa-lg" aria-hidden="true"></i>
+                        <a>探索</a>
                     </div>
                     <div id="m_bottom_bg" class="m_box_col m_box_center m_box_center_a">
                         <img src="{{ url_for('static',filename="/static/images/bg_musume.png") }}">

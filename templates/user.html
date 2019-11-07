@@ -1,11 +1,159 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>点击导航栏头像去的是我的个人中心主页 user/123</title>
-</head>
-<body>
-个人中心主页包括
+{% extends 'base2.html' %}
+{% block title %}user{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+
+    <style>
+    /*{
+    #用户控制中心 #
+}*/
+.user, .user2 {
+    display: flex;
+}
+
+.user_avatar {
+    margin-left: 0px;
+}
+
+.user_avatar img {
+    width: 50px;
+    /*32- > 40 -> 50 -> 75 -> -> 100 -> 120 > -> 136 */
+    heigt: 50px;
+}
+
+div.user_status {
+    margin-right: 0px;
+    width: 80%;
+}
+
+div.user_profile {
+    margin-left: 0px;
+}
+
+div.user_profile a {
+    font-size: 16px;
+    color: #222222
+}
+
+
+div.user_status a {
+    width: calc(100% / 3);
+    text-align: center;
+    float: left;
+}
+
+.avatar_action {
+    margin-right: 0px;
+}
+
+div.user_status .p1 {
+    font-weight: bold;
+    line-height: 19px;
+    color: #00a1d6;
+    color: #369cf8;
+    color: #1da1f2;
+    padding: 6px 0px 6px 0px;
+}
+
+div.user_status .p2 {
+    font-weight: bold;
+    color: #99a2aa;
+    font-size: 12px;
+}
+
+div#user_panel {
+    width: 265px;
+}
+
+small.grey {
+    font-size: 12px;
+    color: #999;
+}
+
+ul.menu_item::before {
+    display: block;
+    content: '';
+    height: 1px;
+    background-color: #eee;
+}
+
+ul.menu_item a {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0px;
+    line-height: 1;
+    color: #666;
+}
+
+ul.menu_item span {
+    margin: 0;
+    padding: 0;
+}
+
+
+    </style>
+{% endblock %}
+
+
+
+{% block content %}
+    {{ super() }}
+     <div id="main_left">
+    </div>
+                   <div class="card" id="user_panel">
+                    <div class="user">
+                        <div class="user_avatar">
+                            <a href="/user/456744">
+                                <img class="avatar"
+                                     src="{{ url_for('static',filename='static/images/avaster.jpg') }}">
+                            </a>
+                        </div>
+                        <div class="user_status">
+                            <a href="/user/456744/f0llowing"><p class="p1">233</p>
+                                <p class="p2">关注</p></a>
+                            <a href="/user/456744/followed"><p class="p1">22</p>
+                                <p class="p2">被关注</p></a>
+                            <a href="/user/456744/love"><p class="p1">2233</p>
+                                <p class="p2">动态</p></a>
+                        </div>
+                    </div>
+                    <div class="user2">
+                        <div class="user_profile">
+                            <a class="user_name" href="/user/456744" class="id l">onlyindex</a></p>
+                            <small class="grey">@456744</small>
+                        </div>
+                        <div class="avatar_action">
+                            <button>follow/edit</button>
+                        </div>
+                    </div>
+                    <div class="user_other">
+                        <p><img src="{{ url_for('static',filename='static/images/location.png') }}">珠海</p>
+                        <p class="tip">不会读绘本的家长不是好的程序员👨‍💻‍不会读绘本的家长不是好的程序员👨‍💻‍</p>
+                    </div>
+                    <div class="user_menu">
+                        <ul class="menu_item">
+                            <li><a href="#"><span>书架</span>
+                                <span class="count">233</span></a>
+                            </li>
+                            <li><a href="#"><span>我读</span>
+                                <span class="count">233</span></a>
+                            </li>
+                             <li><a href="#"><span>书单</span>
+                                <span class="count">233</span></a>
+                            </li>
+                        </ul>
+                        <ul class="menu_item">
+                            <li><a href="#"><span>社团</span>
+                                <span class="count">233</span></a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+
+{% endblock %}
 
 
 
@@ -13,9 +161,3 @@
 
 
 
-我的动态 （我的读书   我的笔记   我的讨论 ）
-我的书架 （选中点击导航的书架效果等价）=我有的书和我的读书进度（管理更新读书进度=在读、已读➕写读书笔记）我的书籍分类 使用书单的形式分类
-学习记录  听绘本和看笔记的学习记录  点击mp3或者音频可以在线播放
-
-</body>
-</html>

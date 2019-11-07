@@ -1,0 +1,44 @@
+{% extends 'base2_1.html' %}
+{% block title %}home2{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <style>
+        .nav_ul_list {
+            color: #555;
+        }
+
+        .nav_ul_list .item_li {
+            display: inline-block;
+            margin: 0 .75rem;
+        }
+
+        .nav_ul_list .item_li.cur {
+            color: #44ACF2;
+        }
+
+
+        .nav_ul_list .item_li span {
+            position: relative;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+    </style>
+{% endblock %}
+{% block nav %}
+    <ul class="nav_ul_list">
+                <li class="item_li cur">
+                    <span>关注</span>
+                </li>
+                <li class="item_li">
+                    <span>发现</span>
+                </li>
+            </ul>
+{% endblock %}
+{% block page_content %}
+    <div>我的关注列表动态</div>
+{% endblock %}
+
+
+

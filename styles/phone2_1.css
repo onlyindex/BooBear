@@ -82,7 +82,7 @@ ul, li {
 .m_top_bar{
     background-color: #fff;
     height: 2.2rem;
-    position: fixed;
+    /*position: fixed;*/
     top: 0;
     left: 0;
     right: 0;
@@ -90,36 +90,45 @@ ul, li {
     border-top-width: 0px;
     border-right-width: 0;
     border-bottom-width: 1px;
+    border-bottom: 1px solid #e6e6e6;
     border-left-width: 0;
     border-color: #e6e6e6;
     border-style: solid;
 }
 
 
-
-.m_top_bar .back {
-    left: .1rem;
-    background-image: url("../static/images/back.png");
-}
-.m_top_bar .share {
-    right: .1rem;
-    background-image: url("../static/images/share.png");
-}
-.m_top_bar .mobile_logo {
-    background-image: url("../static/images/logo.png");
-}
-.m_top_bar .m_top_bar_content .iconpic {
+/*  每个图标的位置  i {
     display: inline-block;
-    color: #333;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    width: 1.5rem;
-    height: 1.5rem;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    background: url() no-repeat 0 0/20px;
+}*/
+
+
+/*.m_top_bar .back {*/
+/*    left: .1rem;*/
+/*    background-image: url("../static/images/back.png");*/
+/*}*/
+/*.m_top_bar .share {*/
+/*    right: .1rem;*/
+/*    background-image: url("../static/images/share.png");*/
+/*}*/
+/*.m_top_bar .mobile_logo {*/
+/*    background-image: url("../static/images/logo.png");*/
+/*}*/
+/*.m_top_bar .m_top_bar_content .iconpic {*/
+/*    display: inline-block;*/
+/*    color: #333;*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    -webkit-transform: translateY(-50%);*/
+/*    transform: translateY(-50%);*/
+/*    width: 1.5rem;*/
+/*    height: 1.5rem;*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+/*}*/
 
 
 

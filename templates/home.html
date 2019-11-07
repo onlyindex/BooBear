@@ -1,143 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hello</title>
+{% extends 'base.html' %}
+{% block title %}boobear{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+
     <style>
+    {#导航介绍#}
 
-        html {
-            word-break: break-word;
-        }
-         * {
-            margin: 0 auto; /*网页居中*/
-            padding: 0; /*网页边距*/
-        }
+.slogan {
+    color: #315898;
+    width: 590px;
+    margin-left: 80px;
 
-        body {
-            background: #DFE2EE url("../static/images/bg_title.png") repeat-x;
-            font: 14px Helvetica,Arial,BlinkMacSystemFont, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
-            line-height: 20px;
-            color: #222;
-            overflow-y: scroll;
-            -webkit-font-smoothing: antialiased; /*移动端抗锯齿渲染*/
-            text-rendering: optimizeLegibility; /*侧重文本可读性*/
-        }
+}
 
+.slogan li {
+    float: left;
+}
 
+.slogan li div {
+    padding: 2px 10px 2px 10px;
+}
 
+.slogan strong {
+    font-size: 24px;
+}
 
-        a {
-            text-decoration: none;
-            color: #0084B4;
-        }
-
-        a.l, a.l:link, a.l:visited, a.l:active {
-            color: #0084B4;
-            border: 0;
-            text-decoration: none;
-        }
-
-        ul, li {
-            list-style: none;
-        }
+.slogan small {
+    font-size: 12px;
+}
 
 
-        img.avatar {
-            background-color: #FFF;
-            -moz-border-radius: 5px;
-            -webkit-border-radius: 5px;
-            border-radius: 5px;
-        }
-
-        .ll {
-            float: left;
-            margin-top: 3px;
-        }
-
-        #auth .inner {
-            margin-left: 40px;
-        }
-
-
-        #auth {
-            font-size: 12px;
-
-
-            color: #FFF;
-        }
-
-        #auth a.l {
-            color: #EEE;
-        }
-
-        #searchfrom .inner {
-            padding: 1px 0;
-            background-color: #FFF;
-            -moz-opacity: .9;
-            opacity: .9;
-            filter: alpha(opacity=90);
-            -moz-border-radius: 15px;
-            -webkit-border-radius: 15px;
-            border-radius: 15px;
-            -webkit-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 0 hsla(0, 100%, 100%, .1), 0 0px 0 hsla(212, 77%, 26%, 1), 0 0px 2px hsla(214, 100%, 0%, .5);
-            -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 hsla(0, 100%, 100%, .1), 0 0px 0 hsla(212, 77%, 26%, 1), 0 0px 2px hsla(214, 100%, 0%, .5);
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 0 hsla(0, 100%, 100%, .1), 0 0px 0 hsla(212, 77%, 26%, 1), 0 0px 2px hsla(214, 100%, 0%, .5);
-        }
-
-        #searchfrom input.textarea {
-            border: none;
-            background: transparent;
-        }
-
-        #searchfrom input.button {
-            width: 20px;
-            height: 20px;
-            margin: 0px 5px 0 0;
-            padding: 4px 0;
-            border: medium none;
-            background: transparent url("../static/images/search.png") no-repeat;
-            text-indent: -9999px;
-        }
-
-
-        .nav_link a {
-            padding: 5px 10px;
-            color: #FFF;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-
-        .slogan {
-            color: #315898;
-            width: 590px;
-            margin-left: 80px;
-
-        }
-
-        .slogan li {
-            float: left;
-        }
-
-        .slogan li div {
-            padding: 2px 10px 2px 10px;
-        }
-
-        .slogan strong {
-            font-size: 24px;
-        }
-
-        .slogan small {
-            font-size: 12px;
-        }
-
-
-
-   div#intro_boobear {
+div#intro_boobear {
     width: 980px;
-       height: 135px;
+    height: 135px;
     background: url("../static/images/home_jj.gif") no-repeat;
     background-position: right bottom;
     position: relative;
@@ -147,173 +43,192 @@
     width: 980px;
 }
 
-        .boobearMusume img{
+.boobearMusume img {
 
-margin-left: 550px;
+    margin-left: 550px;
     position: relative;
     margin-top: -60px;
 
 
-        }
+}
 
-        div#boobearHome {
+div#boobearHome {
 
-            width: 980px;
+    width: 980px;
 
-        }
+}
 
-        div#boobearHome #main_left {
-            width: 590px;
+div#boobearHome #main_left {
+    width: 690px;
+    float: left;
+}
 
-        }
-
-        .card {
-            float: left;
-            margin-right: 20px;
-            padding: 20px 10px 20px 10px;
-            background: #fff;
-            -moz-border-radius: 0 1px 0 1px;
-            -webkit-border-radius: 0 10px 0 1px;
-            border-radius: 0 1px 0 1px;
-        }
-
-        div#boobearHome #main_left h2 {
-            font-size: 15px;
-            color: #2F5797;
-            /* margin: 0 0 10px 0; */
-        }
-
-        ul.subjectGrid li {
-            float: left;
-            width: 111px;
-            height: 185px;
-            line-height: 150%;
-        }
-
-        span.ico_love {
-            background: url("../static/images/ico_list_love.gif") no-repeat 0 0;
-            padding: 0 0 0 13px;
-            font-size: 10px;
-            line-height: 10px;
-            color: #AAA;
-        }
-
-        span.ico_members {
-            background: url("../static/images/ico_list_member.gif") no-repeat 0 0;
-            padding: 0 0 0 13px;
-            font-size: 10px;
-            line-height: 10px;
-            color: #AAA;
-        }
-
-        ul.clubsLarge li {
-            float: left;
-            width: 111px;
-            height: 145px;
-        }
-
-        img.grid {
-            margin: 2px 2px 0 0;
-            border: 1px solid #eee;
-            padding: 1px;
-        }
-
-        div#boobearHome #dashboard_right {
-            width: 290px;
-        }
-
-        div#boobearHome h2.sideTitle {
-            color: #2F5797;
-            background: #DFE2EE url("../static/images/ico_jj.png") no-repeat 5px 50%;
-            margin: 0 0 10px 0;
-            padding: 5px 0 5px 30px;
-            -moz-border-radius: 10px;
-            -webkit-border-radius: 10px;
-            border-radius: 10px;
-            font-size: 13px;
-        }
-
-        ul.timeline_img li {
-            overflow: hidden;
-            margin-top: 5px;
-            padding-bottom: 5px;
-        }
-
-        ul.timeline_img li div.avatar {
-            float: left;
-            display: inline;
-            padding-right: 2px;
-        }
-
-        ul.timeline_img li div.info {
-            padding-bottom: 5px;
-            margin-left: 45px;
-            border-bottom: 1px solid #E0E0E0;
-            color: #666;
-            _height: 30px;
-        }
+div#boobearHome #dashboard_right {
+    width: 290px;
+    float: right;
+}
 
 
-        div.main {
-
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 85px;
-
-        }
-
-        .footer {
-            width: 100%;
-            background: #555199 repeat-x;
-            position: fixed;
-            bottom: 0;
-        }
 
 
-        .navbar {
-            width: 1080px;
-            height: 46px;
-
-            display: flex;
-            align-items: center;
-
-        }
-
-        .nav_logo {
-            position: fixed;
-            bottom: 0;
-            margin-right: 0;
-            margin-left: -120px;
-
-        }
 
 
-        @media screen and (max-width: 720px) {
-            .inner {
-                display: none;
-            }
-
-            #searchfrom .inner {
-
-                -moz-border-radius: 150px;
-                -webkit-border-radius: 150px;
-                border-radius: 150px;
-            }
 
 
-        }
+
+
+    ul.timelineTabs {
+    padding: 0 0 0 5px;
+    height: auto;
+    background: #FFF;
+    border: none;
+    border-bottom: 1px solid #DFDFDF;
+    border-radius: 3px 3px 0 0;
+}
+
+    ul.timelineTabs li {
+    float: left;
+    font-size: 13px;
+}
+    ul.timelineTabs li a.top_focus {
+    color: #FFF;
+    background: #F09199;
+}
+    ul.timelineTabs li a {
+    margin: 5px 5px 5px 0;
+    padding: 2px 10px;
+    border: none;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+}
+    ul.timelineTabs li a {
+    display: block;
+    color: #888;
+    margin: 2px 0 0 0;
+    padding: 5px 15px 5px 15px;
+}
+
+    ul.timeline_list li {
+    overflow: hidden;
+    margin-top: 5px;
+    padding-bottom: 5px;
+}
+
+ul.timeline_list li div.avatar {
+    float: left;
+    display: inline;
+    padding-right: 2px;
+}
+
+ul.timeline_list li div.info {
+    padding-bottom: 5px;
+    margin-left: 45px;
+    border-bottom: 1px solid #E0E0E0;
+    color: #666;
+    _height: 30px;
+}
+    {#内容时间线#}
+
+
+
+    .nav_top_main {
+    /*top: 2.5rem;*/
+    top: 0;
+    right: 0;
+    left: 0;
+    font-size: 1rem;
+    color: #a5adb5;
+    position: relative;
+    /*position: absolute;*/
+    line-height: 2.75rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+
+.nav_top_main .m_box {
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+.nav_top_main .nav_item {
+    white-space: nowrap;
+    -webkit-box-sizing: border-box;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    /* position: relative; */
+    padding-bottom: .9rem;
+    margin-bottom: -.9rem;
+    text-align: center;
+    padding: 0 .5rem;
+}
+
+}
+.nav_top_main .nav_item .item_li.cur {
+    color: #000;
+}
+
+.nav_top_main .nav_item .item_li {
+    display: inline-block;
+    margin: 0 .75rem;
+}
+
+.nav_top_main .nav_item .item_li span {
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+/*.m_top_nav .nav_top_main .nav_item .item_li.cur span::after {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    left: 50%;*/
+/*    transform: translate(-50%,0);*/
+/*    bottom: .1875rem;*/
+/*    width: 1.5rem;*/
+/*    height: .1875rem;*/
+/*    border-radius: .125rem;*/
+/*    background-color: #FF8200;*/
+/*}*/
+
+.nav_top_main .nav_item .item_li.cur span em {
+    display: block;
+    position: absolute;
+    bottom: -.5rem;
+    left: 50%;
+    width: .875rem;
+    margin-left: -.4375rem;
+    border-top: 2px solid #282f3c;
+}
 
     </style>
-
-</head>
-<body>
-<div id="wrapper">
-
-    <div class="main">
-
-        <div id="intro_boobear">
-            <div class="intro_boobear_content">
+{% endblock %}
+{% block nav %}
+    {{super()}}
+        {% endblock %}
+{% block content %}
+    {{ super() }}
+    <div class="nav_top_main m_container_max">
+                    <div class="m_box">
+                        <div class="slide_wrap">
+                            <ul class="nav_item">
+                                <li class="item_li cur">
+                                    <span>关注<em></em></span>
+                                </li>
+                                <li class="item_li">
+                                    <span>热门<em></em></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    <div id="intro_boobear">
+        <div class="intro_boobear_content">
             <div class="slogan">
                 <li>
                     <div>
@@ -343,239 +258,138 @@ margin-left: 550px;
 
             <div class="boobearMusume"><img src="{{ url_for('static',filename='static/images/home_doujin.gif') }}">
             </div>
-            </div>
         </div>
-        <div id="boobearHome" class="">
-            <div class="cards">
-                <div id="main_left">
-                    <div class="card" >
-
-                    <h2>最新绘本
+    </div>
+    <div id="boobearHome">
+        <div class="cards">
+            <div id="main_left">
+                <ul id="timelineTabs" class="timelineTabs clearit">
+                        <li><a id="tab_all" href="#" class="focus">动态</a></li>
+                        <li><a id="tab_say" href="#">图书</a></li>
+                        <li><a id="tab_subject" href="#">笔记</a></li>
+                        <li><a id="tab_progress" href="#">书单</a></li>
+                        <li><a id="tab_blog" href="#">讨论</a></li>
+                    </ul>
+                <ul class="card">
+                    <h2 class="sideTitle">动态
                         <small>...<a href="/lib/new" class="l">more</a></small>
                     </h2>
-                    <ul class="subjectGrid">
-                        <li>
-                            <a href="/lib/1" title="七色" class="image">
-                                <div class="image">
-                                    <div class="imageInner"
-                                         style="background-image:url('../static/images/no_icon.jpg');"></div>
-                                </div>
-                                <p class="title">George's New Dinosaur</p>
-                            </a>
-                            <p class="info"><span class="ico_love" title="0人喜欢">0</span></p>
-                        </li>
-                        <li>
-                            <a href="/lib/2" title="花来2.0" class="image">
-                                <div class="image">
-                                    <div class="imageInner"
-                                         style="background-image:url('../static/images/no_icon.jpg');"></div>
-                                </div>
-                                <p class="title">佩奇一家去野餐</p>
-                            </a>
-                            <p class="info"><span class="ico_love" title="0人喜欢">0</span></p>
-                        </li>
-                        <li>
-                            <a href="/lib/49960" title="en casa" class="image">
-                                <div class="image">
-                                    <div class="imageInner"
-                                         style="background-image: url('../static/images/no_icon.jpg');"></div>
-                                </div>
-                                <p class="title">en casa</p>
-                            </a>
-                            <p class="info"><span class="ico_love" title="0人喜欢">0</span></p>
-                        </li>
-                        <li>
-                            <a href="/lib/49959" title="「灵能百分百」律中心全員向歡樂本-我弟才沒有那麼兇暴喇" class="image">
-                                <div class="image">
-                                    <div class="imageInner"
-                                         style="background-image:url('../static/images/no_icon.jpg');"></div>
-                                </div>
-                                <p class="title">「灵能百分百」律中心全員向歡樂本-我弟才沒有那麼兇暴喇</p>
-                            </a>
-                            <p class="info"><span class="ico_love" title="1人喜欢">1</span></p>
-                        </li>
-                        <li>
-                            <a href="/lib/49958" title="雅典娜的岁数正是熊孩子的年纪" class="image">
-                                <div class="image">
-                                    <div class="imageInner"
-                                         style="background-image:url('../static/images/no_icon.jpg');"></div>
-                                </div>
-                                <p class="title">雅典娜的岁数正是熊孩子的年纪</p>
-                            </a>
-                            <p class="info"><span class="ico_love" title="1人喜欢">1</span></p>
-                        </li>
-                        <li>
-                            <a href="/lib/49957" title="屍娘前線注意報" class="image">
-                                <div class="image">
-                                    <div class="imageInner"
-                                         style="background-image:url('../static/images/no_icon.jpg');"></div>
-                                </div>
-                                <p class="title">屍娘前線注意報</p>
-                            </a>
-                            <p class="info"><span class="ico_love" title="0人喜欢">0</span></p>
-                        </li>
-                        <li>
-                            <a href="/lib/49956" title="埃斗魯殭屍IN佐賀SAGA" class="image">
-                                <div class="image">
-                                    <div class="imageInner"
-                                         style="background-image:url('../static/images/no_icon.jpg');"></div>
-                                </div>
-                                <p class="title">埃斗魯殭屍IN佐賀SAGA</p>
-                            </a>
-                            <p class="info"><span class="ico_love" title="0人喜欢">0</span></p>
-                        </li>
-                        <li>
-                            <a href="/lib/49955" title="電波通信VOL.04" class="image">
-                                <div class="image">
-                                    <div class="imageInner"
-                                         style="background-image:url('../static/images/no_icon.jpg');"></div>
-                                </div>
-                                <p class="title">電波通信VOL.04</p>
-                            </a>
-                            <p class="info"><span class="ico_love" title="0人喜欢">0</span></p>
-                        </li>
-                        <li>
-                            <a href="/lib/49954" title="【暂定】花与你相伴的日子" class="image">
-                                <div class="image">
-                                    <div class="imageInner"
-                                         style="background-image:url('../static/images/no_icon.jpg');"></div>
-                                </div>
-                                <p class="title">【暂定】花与你相伴的日子</p>
-                            </a>
-                            <p class="info"><span class="ico_love" title="0人喜欢">0</span></p>
-                        </li>
-                        <li>
-                            <a href="/lib/49953" title="test" class="image">
-                                <div class="image">
-                                    <div class="imageInner"
-                                         style="background-image:url('../static/images/no_icon.jpg');"></div>
-                                </div>
-                                <p class="title">test</p>
-                            </a>
-                            <p class="info"><span class="ico_love" title="0人关注">0</span></p>
-                        </li>
-                        <li>
-                            <a href="/subject/49952" title="半身" class="image">
-                                <div class="image">
-                                    <div class="imageInner"
-                                         style="background-image:url('../static/images/no_icon.jpg');"></div>
-                                </div>
-                                <p class="title">半身</p>
-                            </a>
-                            <p class="info"><span class="ico_love" title="1人关注">1</span></p>
-                        </li>
-                        <li>
-                            <a href="/subject/49951" title="Marriage" class="image">
-                                <div class="image">
-                                    <div class="imageInner"
-                                         style="background-image:url('../static/images/no_icon.jpg');;"></div>
-                                </div>
-                                <p class="title">Marriage</p>
-                            </a>
-                            <p class="info"><span class="ico_love" title="0人关注">0</span></p>
-                        </li>
-                    </ul>
-                    </div>
-                    <div class="card">
-                    <h2>新近社团
-                        <small>...<a href="/club" class="l">more</a></small>
-                    </h2>
-                    <ul class="clubsLarge">
-                        <li>
-                            <a href="club/club1" class="grid">
-                                <img src="{{ url_for('static',filename='static/images/no_icon.jpg') }}" class="grid">
-                                <span>社团1</span>
-                            </a>
-                            <p class="info">
-                                <span class="ico_love" title="0人关注">0</span>
-                                <span class="ico_members" title="1位成员">1</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="grid">
-                                <img src="{{ url_for('static',filename='static/images/no_icon.jpg') }}" class="grid">
-                                <a>社团2</a>
-                            </a>
-                            <p class="info">
-                                <span class="ico_love" title="1人关注">1</span>
-                                <span class="ico_members" title="1位成员">1</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="grid">
-                                <img src="{{ url_for('static',filename='static/images/no_icon.jpg') }}" class="grid">
-                                <a>社团3</a>
-                            </a>
-                            <p class="info"><span class="ico_love" title="0人关注">0</span>
-                                <span class="ico_members" title="1位成员">1</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="grid">
-                                <img src="//lain.bgm.tv/pic/club/icon/g/no_icon.jpg" class="grid">
-                                <a>社团4</a>
-                            </a>
-                            <p class="info"><span class="ico_love" title="0人关注">0</span>
-                                <span class="ico_members" title="1位成员">1</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="grid">
-                                <img src="{{ url_for('static',filename='static/images/no_icon.jpg') }}" class="grid">
-                                <a>社团6</a>
-                            </a>
-                            <p class="info">
-                                <span class="ico_love" title="0人关注">0</span>
-                                <span class="ico_members" title="1位成员">1</span>
-                            </p>
-                        </li>
-                        <li>
-                            <a href="#" class="grid">
-                                <img src="{{ url_for('static',filename='static/images/no_icon.jpg') }}" class="grid">
-                                <a>白鸟探长英语社</a>
-                            </a>
-                            <p class="info"><span class="ico_love" title="0人关注">0</span>
-                                <span class="ico_members" title="1位成员">1</span></p>
-                        </li>
-                    </ul>
-                    </div>
+                    <ul class="timeline_list">
+                        <li class="status-item" data-sid="2567243840" data-uid="1015631" data-action="1"
+                            data-target-type="book" data-object-kind="1001" data-object-id="33477385">
+                            <div class="mod" data-status-id="2567243840">
+
+                                <div class="hd "
+                                     data-status-url="https://www.douban.com/people/leeforce/status/2567243840/">
 
 
-                </div>
+                                    <div class="usr-pic">
+                                        <a href="https://www.douban.com/people/leeforce/"
+                                           onclick="moreurl(this, {&quot;action&quot;: &quot;1&quot;, &quot;from&quot;: &quot;nmbp-2567243840&quot;, &quot;target_type&quot;: &quot;book&quot;, &quot;object_kind&quot;: &quot;1001&quot;})"
+                                           title="力总"><img src="https://img3.doubanio.com/icon/u1015631-44.jpg"
+                                                           alt="力总"></a>
+                                    </div>
+                                    <div class="text">
+                                        <a href="https://www.douban.com/people/leeforce/"
+                                           onclick="moreurl(this, {&quot;action&quot;: &quot;1&quot;, &quot;from&quot;: &quot;nmbp-2567243840&quot;, &quot;target_type&quot;: &quot;book&quot;, &quot;object_kind&quot;: &quot;1001&quot;})"
+                                           class="lnk-people">onlyindex</a>
+                                        想读
 
 
-                <div id="dashboard_right">
-                    <h2 class="sideTitle">登录</h2>
-                    <div id="LoginBox" class="sideBaoContent">
-<form id="loginForm" method="post" name="login" action="http://bgm.tv/login">
-<input type="hidden" name="formhash" value="6be8350b">
-<input type="hidden" name="cookietime" value="2592000">
-<input type="hidden" name="referer" value="http://doujin.bgm.tv">
-<input class="login" value=" " name="loginsubmit" type="submit">
-<dl>
-<dt><label for="email" title="您可以使用 Email 登录">Email</label><input id="email" name="email" type="text"></dt>
-<dt><label for="password">密码</label><input id="password" name="password" type="password"></dt>
-<dt id="rechaptcha_form" style="display:none" class="clearit">
-<p class="title"><label for="captcha">验证</label></p>
-<p class="input clearit"><input id="captcha" name="captcha_challenge_field" class="inputtext" type="text" autocomplete="off">
-<span id="captcha_img"></span>
-</p>
-</dt>
-</dl>
-<div class="reg">
-<p class="tip">还没有 Bangumi 账户？
-<a href="http://bgm.tv/signup?referer=doujin" class="btnPink">立即注册</a>
-</p>
-</div>
-</form>
-</div>
+                                    </div>
+
+                                </div>
+
+                                <div class="bd book">
 
 
- <div class="card"></div>
-                     <div class="card">
-                          <h2 class="sideTitle">大家都在看什么</h2>
-                    <ul class="timeline_img">
+                                    <div class="block block-subject">
+                                        <div class="pic">
+                                            <a href="https://book.douban.com/subject/33477385/" target="_blank"
+                                               onclick="moreurl(this, {&quot;action&quot;: &quot;1&quot;, &quot;from&quot;: &quot;nmb-2567243840&quot;, &quot;target_type&quot;: &quot;book&quot;, &quot;object_kind&quot;: &quot;1001&quot;})"
+                                               title="六千零一夜" class="media"><img
+                                                    src="https://img1.doubanio.com/view/status/small/public/02fuEm.webp"></a>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">
+                                                <a href="https://book.douban.com/subject/33477385/" target="_blank"
+                                                   onclick="moreurl(this, {&quot;action&quot;: &quot;1&quot;, &quot;from&quot;: &quot;nmb-2567243840&quot;, &quot;target_type&quot;: &quot;book&quot;, &quot;object_kind&quot;: &quot;1001&quot;})">六千零一夜</a>
+                                                <span class="allstar00"></span>
+                                                <strong class="rating_num"></strong>
+                                            </div>
+
+                                            <p>☆编辑推荐：
+                                                关于埃及的故事，你听过多少？
+                                                也许你见过欧洲教堂中的马赛克镶嵌画...
+                                            </p>
+                                            <div class="info">
+                                                <ul>
+                                                    <li><span class="label">作者:</span><span>[英]克里斯蒂娜·里格斯</span>
+
+                                                    </li>
+                                                    <li><span class="label">出版:</span><span>中国社会科学出版社</span>
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="actions">
+
+                                        <span class="created_at" title="2019-07-23 17:36:03"><a
+                                                href="https://www.douban.com/people/leeforce/status/2567243840/">7月23日</a></span>
+
+                                        <a href="https://www.douban.com/people/leeforce/status/2567243840/"
+                                           class="btn btn-action-reply new-reply" data-action-type="showComments"
+                                           data-count="0">
+                                            <path d="M14.046 2.242l-4.148-.01h-.002c-4.374 0-7.8 3.427-7.8 7.802 0 4.098 3.186 7.206 7.465 7.37v3.828c0 .108.044.286.12.403.142.225.384.347.632.347.138 0 .277-.038.402-.118.264-.168 6.473-4.14 8.088-5.506 1.902-1.61 3.04-3.97 3.043-6.312v-.017c-.006-4.367-3.43-7.787-7.8-7.788zm3.787 12.972c-1.134.96-4.862 3.405-6.772 4.643V16.67c0-.414-.335-.75-.75-.75h-.396c-3.66 0-6.318-2.476-6.318-5.886 0-3.534 2.768-6.302 6.3-6.302l4.147.01h.002c3.532 0 6.3 2.766 6.302 6.296-.003 1.91-.942 3.844-2.514 5.176z"></path>
+                                        </a>
+
+                                        &nbsp;&nbsp;<a
+                                            href="https://www.douban.com/people/leeforce/status/2567243840/"
+                                            class="btn btn-key-like  btn-like " data-action-type="like">赞</a>
+
+
+                                        &nbsp;&nbsp;<a class="btn btn-key-reshare btn-reshare new-reshare "
+                                                       data-action-type="reshare">转发</a>
+
+
+                                    </div>
+
+                                    <div class="others">
+                                        <div class="comments">
+                                            <div class="comments-items"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li id="tml_18920860" class="clearit tml_item">
+                                <span class="avatar"><a href="http://bgm.tv/user/405623" class="avatar"><span
+                                        class="avatarNeue avatarReSize40 ll"
+                                        style="background-image:url('//lain.bgm.tv/pic/user/m/000/40/56/405623.jpg?r=1548611129')"></span></a></span>
+                            <span class="info clearit"><a href="http://bgm.tv/subject/9912"><img
+                                    src="//lain.bgm.tv/pic/cover/g/0e/14/9912_LZML8.jpg" alt="" class="rr"></a><a
+                                    href="http://bgm.tv/user/405623" class="l">タイタン</a> 看过 <a
+                                    href="http://bgm.tv/subject/9912" data-subject-name-cn="日常"
+                                    data-subject-id="9912" data-subject-name="日常" class="l">日常</a> <div
+                                    class="collectInfo"><span class="sstars9 starsinfo"></span></div>
+<p class="date">
+54秒前 · web </p>
+</span>
+                        </li>
+
+
                         <li class="">
                             <div class="avatar">
                                 <a href="/club/lcsleep" class="avatar">
                                     <img
-                                            src="{{ url_for('static',filename='static/images/no_icon.jpg') }}" alt=""
+                                            src="{{ url_for('static',filename='static/images/no_icon.jpg') }}"
+                                            alt=""
                                             class="avatar">
                                 </a>
                             </div>
@@ -584,7 +398,8 @@ margin-left: 550px;
                                     <img src="{{ url_for('static',filename='static/images/no_icon.jpg') }}" alt=""
                                          class="rr"></a>
                                 <a href="user/admin" class="l">admin</a> 发布新书评
-                                <a href="{{ url_for('static',filename='static/images/no_icon.jpg') }}" class="l">七色</a>
+                                <a href="{{ url_for('static',filename='static/images/no_icon.jpg') }}"
+                                   class="l">七色</a>
                             </div>
                         </li>
                         <li class="">
@@ -614,55 +429,13 @@ margin-left: 550px;
                                     href="http://doujin.bgm.tv/subject/49957" class="l">屍娘前線注意報</a></div>
                         </li>
                     </ul>
-                     </div>
+            </div>
 
 
+            </div>
 
-
+                <div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="footer">
-                <ul class="navbar">
+{% endblock %}
 
-            <li id="auth">
-                <a class="avatar" href="/signup">
-                    <img class="avatar ll" src="{{ url_for('static',filename='static/images/icon.jpg') }}"></a>
-                <div class="inner">游客，欢迎！
-                    <a href="/login" class="l">[登录]</a><a href="http://bgm.tv/signup" class="l">[注册]</a>
-                    <br>2019年7月23日, 阅读绘本2333本。
-                </div>
-            </li>
-            <li class="nav_link"><a href="/lib" class="top">绘本馆</a></li>
-            <li class="nav_link"><a href="/shelf" class="top">书架</a></li>
-            <li class="nav_link"><a href="/club" class="top">社团</a></li>
-            <li class="SearchBar">
-                <form id="searchfrom" action="/search" method="post">
-                    <div class="inner ll">
-                        <input id="search_text" name="search_text" class="textarea" type="text">
-                        <input id="Button1" class="button png_bg" title="Search" value="搜索" type="submit">
-                    </div>
-                </form>
-            </li>
-            <li id="logo">
-                <a href="/"><img class="nav_logo" src="{{ url_for('static',filename="/static/images/bg_musume.png") }}"></a>
-            </li>
-
-
-        </ul>
-
-
-
-    </div>
-
-
-</div>
-
-</div>
-
-</div>
-
-
-</body>
-</html>

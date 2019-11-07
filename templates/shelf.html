@@ -1,10 +1,390 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base2.html' %}
+{% block title %}shelf{% endblock %}
 
-</body>
-</html>
+{% block styles %}
+    {{ super() }}
+    <style>
+        .m_text_cut {
+            display: inline-block;
+        {#max-width: 12rem;#} color: #333;
+            font-style: normal;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            background-repeat: no-repeat;
+            background-size: cover;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .m_top_bar .record {
+            right: .1rem;
+            background-image: url("../static/images/record.png");
+        }
+
+        .m_text_cut {
+            display: inline-block;
+        {#max-width: 12rem;#} color: #333;
+            font-style: normal;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            background-repeat: no-repeat;
+            background-size: cover;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .m_main_bar {
+            top: 0;
+            right: 0;
+            left: 0;
+            font-size: 1rem;
+            color: #a5adb5;
+            position: relative;
+        {#相对位置top为0#} line-height: 2.75rem;
+            background-color: #fff;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+
+        .m_main_bar .nav_item {
+            white-space: nowrap;
+            -webkit-box-sizing: border-box;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            /* position: relative; */
+        {#padding-bottom: .9rem;#}{#margin-bottom: -.9rem;#} text-align: center;
+        {#padding: 0 .5rem;#}
+        }
+
+
+        .m_main_bar .nav_item .item_li.cur {
+            color: #000;
+        }
+
+        .m_main_bar .nav_item .item_li {
+            display: inline-block;
+            margin: 0 .75rem;
+        }
+
+        .m_main_bar .nav_item .item_li span {
+            position: relative;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        /*.m_top_nav .nav_top_main .nav_item .item_li.cur span::after {*/
+        /*    content: '';*/
+        /*    position: absolute;*/
+        /*    left: 50%;*/
+        /*    transform: translate(-50%,0);*/
+        /*    bottom: .1875rem;*/
+        /*    width: 1.5rem;*/
+        /*    height: .1875rem;*/
+        /*    border-radius: .125rem;*/
+        /*    background-color: #FF8200;*/
+        /*}*/
+
+        .m_main_bar .nav_item .item_li.cur span em {
+            display: block;
+            position: absolute;
+            bottom: -.5rem;
+            left: 50%;
+            width: .875rem;
+            margin-left: -.4375rem;
+            border-top: 2px solid #282f3c;
+        }
+
+        {#书  #}
+        .booklist_group {
+            padding: .26667rem;
+        }
+
+        ul.booklist {
+            margin-right: -.26667rem;
+
+        }
+
+        ul.booklist li {
+            padding: 0 .26667rem .48rem 0;
+            float: left;
+            width: 33.33333%;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        img.book_img {
+        {#width: 5.25rem;#}{#height: 7rem;#} width: 6.6875rem;
+            height: 8.9375rem;
+            border-radius: 0.3rem;
+            width: 100%;
+            height: 100%;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        ul.booklist li p.title {
+            font-size: .37333rem;
+            color: #333333;
+            height: .53333rem;
+            line-height: .53333rem;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            display: block;
+
+        }
+
+        ul.booklist li span.book_status {
+            position: absolute;
+            top: .13333rem;
+            right: .13333rem;
+            height: .42667rem;
+            line-height: .42667rem;
+            padding: 0 .10667rem;
+            -webkit-border-radius: .08rem;
+            -moz-border-radius: .08rem;
+            border-radius: .08rem;
+            background-color: #fc6976;
+            color: #fff;
+            font-size: .37333rem;
+            max-width: 8.64rem;;
+
+
+            text-align: center;
+        }
+
+        score {
+            position: absolute;
+            height: 14px;
+            width: 100%;
+            text-align: center;
+            display: inline-block;
+            vertical-align: top;
+            font-size: 12px;
+            transform: scale(.85);
+            color: #fff;
+            background-color: #ffafc9;
+            border-radius: 3px;
+            height: 12px;
+            line-height: 14px;
+            max-width: 28px;
+            padding: 1px 3px;
+        }
+
+
+        .thumbnail {
+            position: relative;
+        }
+
+        .placeholder {
+            left: .1rem;
+        }
+
+
+    </style>
+{% endblock %}
+{% block nav %}
+    <div class="m_top_bar m_container_max">
+        <div class=" m_box m_box_center m_box_center_a m_top_bar_content">
+            <i class="placeholder iconpic">➕</i>
+            <i class=" title m_text_cut">搜索框</i>
+            <i class="record iconpic"></i>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    {{ super() }}
+    <div class="m_main_bar m_container_max">
+        <ul class="nav_item">
+            <li class="item_li cur">
+                <score>233</score><span>想读<em></em></span>
+            </li>
+            <li class="item_li">
+                <score>233</score><span>在读<em></em></span>
+            </li>
+            <li class="item_li">
+                <score>233</score><span>已读<em></em></span>
+            </li>
+        </ul>
+    </div>
+    <div class="m_container_max">
+        <div class="booklist_group">
+            <div class="booklist_group_item">
+                <ul class="booklist">
+                    <li class="booklist_item">
+                        <a href="/lib/1" title="花来2.0">
+                            <div class="thumbnail">
+                                <img class="book_img"
+                                     src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}">
+                                <span class="book_status">想读</span>
+                            </div>
+
+                            <p class="title">George's New Dinosaur</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lib/2" title="花来2.0" class="image">
+                            <div class="thumbnail">
+                                <img class="book_img"
+                                     src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}">
+                                <span class="book_status">已读80% 6/233</span>
+                            </div>
+
+                            <p class="title">Goodnight_Peppa</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lib/49960" title="en casa" class="image">
+                            <div class="thumbnail">
+                                <img class="book_img"
+                                     src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}">
+                                <span class="book_status">已读 233次</span>
+                            </div>
+                            <p class="title">en casa</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lib/49959" title="「灵能百分百」律中心全員向歡樂本-我弟才沒有那麼兇暴喇" class="image">
+                            <div class="thumbnail">
+                                <img class="book_img"
+                                     src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}">
+                                <span class="book_status">想读</span>
+                            </div>
+                            <p class="title">分页内容——第一页的绘本</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lib/49958" title="雅典娜的岁数正是熊孩子的年纪" class="image">
+                            <div class="thumbnail">
+                                <img class="book_img"
+                                     src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}">
+                                <span class="book_status">想读</span>
+                            </div>
+                            <p class="title">雅典娜的岁数正是熊孩子的年纪</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lib/49957" title="屍娘前線注意報" class="image">
+                            <div class="thumbnail">
+                                <img class="book_img"
+                                     src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}">
+                                <span class="book_status">想读</span>
+                            </div>
+                            <p class="title">屍娘前線注意報</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lib/49956" title="埃斗魯殭屍IN佐賀SAGA" class="image">
+                            <div class="thumbnail">
+                                <img class="book_img"
+                                     src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}">
+                                <span class="book_status">想读</span>
+                            </div>
+                            <p class="title">埃斗魯殭屍IN佐賀SAGA</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lib/49955" title="電波通信VOL.04" class="image">
+                            <div class="thumbnail">
+                                <img class="book_img"
+                                     src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}">
+                                <span class="book_status">想读</span>
+                            </div>
+                            <p class="title">電波通信VOL.04</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lib/49954" title="【暂定】花与你相伴的日子" class="image">
+                            <div class="thumbnail">
+                                <img class="book_img"
+                                     src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}">
+                                <span class="book_status">想读</span>
+                            </div>
+                            <p class="title">【暂定】花与你相伴的日子</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lib/49953" title="test" class="image">
+                            <div class="thumbnail">
+                                <img class="book_img"
+                                     src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}">
+                                <span class="book_status">想读</span>
+                            </div>
+                            <p class="title">test</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lib/49952" title="半身" class="image">
+                            <div class="thumbnail">
+                                <img class="book_img"
+                                     src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}">
+                                <span class="book_status">想读</span>
+                            </div>
+                            <p class="title">半身</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/lib/49951" title="Marriage" class="image">
+                            <div class="thumbnail">
+                                <img class="book_img"
+                                     src="{{ url_for('static',filename='/static/images/books/George_New_Dinosaur.jpg') }}">
+                                <span class="book_status">想读</span>
+                            </div>
+                            <p class="title">Marriage</p>
+                        </a>
+                    </li>
+                </ul>
+                <p class="scroll_bottom_tips">
+                    第一页到底啦翻另一页
+                </p>
+
+            </div>
+            <div class="pages_hide">
+            <span class="prev">
+                <i class="ift-left"></i>
+            </span>
+                <span class="active">1</span>
+                <a href="index_p2.html">2</a>
+                <a href="index_p3.html">3</a>
+                <a href="index_p4.html">4</a>
+                <a href="index_p5.html">5</a>
+                <a href="index_p6.html">6</a>
+                <a href="index_p7.html">7</a>…
+                <a href="index_p15.html">15</a>
+                <a class="next" href="index_p2.html">
+                    <i class="ift-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

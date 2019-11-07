@@ -1,0 +1,244 @@
+{% extends 'base2.html' %}
+{% block title %}user{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+
+    <style>
+
+        .user_avatar {
+            margin-left: 0px;
+        }
+
+        .user_avatar img {
+
+            /*32- > 40 -> 50 -> 75 ->80 -> 100 -> 120 > -> 136 */
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .1);
+            cursor: pointer;
+        }
+
+        div.user_status {
+            margin-right: 0px;
+            width: 100%;
+        }
+
+        div.user_profile {
+            margin-left: 0px;
+        }
+
+        div.user_profile a {
+            margin: 12px 0 0;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        span.tag.tag-user {
+            display: inline-block;
+            padding: 0 .23333rem;
+            -webkit-border-radius: 1.33333rem;
+            -moz-border-radius: 1.33333rem;
+            border-radius: 2.33333rem;
+            font-size: .32rem;
+            font-weight: 500;
+            text-align: center;
+            vertical-align: middle;
+            color: #fff;
+            background-color: #5fb2ff;
+        }
+
+
+        div.user_status a {
+            width: calc(100% / 3);
+            text-align: center;
+            float: left;
+        }
+
+        div.user_status .p1 {
+            font-weight: bold;
+            line-height: 19px;
+            color: #00a1d6;
+            color: #369cf8;
+            color: #1da1f2;
+            padding: 6px 0px 6px 0px;
+        }
+
+        div.user_status .p2 {
+            font-weight: bold;
+            color: #99a2aa;
+            font-size: 12px;
+        }
+
+        small.grey {
+            font-size: 12px;
+            color: #999;
+        }
+
+        ul.menu_item::before {
+            display: block;
+            content: '';
+            height: 1px;
+            background-color: #eee;
+        }
+
+        ul.menu_item a {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0px;
+            line-height: 1;
+            color: #666;
+        }
+
+        ul.menu_item span {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .user_center {
+            background: url("../static/images/pic_user_bg@2x.png") no-repeat;
+            -webkit-background-size: 100% auto;
+            -moz-background-size: 100% auto;
+            background-size: 100% auto;
+            padding: 24px 20px 16px;
+        }
+
+        .user_action {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .followButton {
+            width: 88px;
+            height: 36px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            background-color: #ff6fa2;
+            border-radius: 6px;
+            text-align: center;
+            line-height: 1;
+            padding: 10px 0;
+            cursor: pointer;
+            border: none;
+        }
+
+        .user_male {
+            width: 12px;
+            height: 12px;
+        }
+
+        .user_menu {
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+            padding: 0 .42667rem 1.70667rem;
+            -webkit-border-radius: .18667rem;
+            -moz-border-radius: .18667rem;
+            border-radius: .18667rem;
+        }
+
+        .menu_item {
+            width: 100%;
+            -webkit-border-radius: .13333rem;
+            -moz-border-radius: .13333rem;
+            border-radius: .13333rem;
+            overflow: hidden;
+        }
+
+        .item {
+            display: block;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 0 .42667rem;
+            background-color: #fff;
+            -webkit-transition: background-color .1s ease-out;
+            -o-transition: background-color .1s ease-out;
+            -moz-transition: background-color .1s ease-out;
+            transition: background-color .1s ease-out;
+        }
+
+        .link_row {
+
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: .17333rem 0;
+            border-bottom: 1px solid #f5f5f5;
+            align-items: center;
+
+
+        }
+    </style>
+{% endblock %}
+
+
+
+{% block content %}
+    {{ super() }}
+
+    <section class="user_center">
+        <div class="user_action">
+            <div class="user_avatar">
+                <a href="/user/456744">
+                    <img class="avatar"
+                         src="{{ url_for('static',filename='static/images/avaster.jpg') }}">
+                </a>
+            </div>
+            <button class="followButton">follow</button>
+        </div>
+        <div class="user_profile">
+            <div class="user_name" href="/user/456744">
+                <a class="id">admin</a>
+                <small class="grey">@456744</small>
+                <img class="user_male" src="{{ url_for('static',filename='static/images/icon_male.png') }}">
+                <span class="tag tag-user">lv.1</span>
+            </div>
+        </div>
+        <div>
+            <p><img src="{{ url_for('static',filename='static/images/location.png') }}">珠海</p>
+            <p class="tip">不会读绘本的家长不是好的程序员👨‍💻‍不会读绘本的家长不是好的程序员👨‍💻‍</p>
+        </div>
+
+
+        <div class="user_status">
+            <a href="/user/456744/f0llowing"><p class="p1">233</p>
+                <p class="p2">关注</p></a>
+            <a href="/user/456744/followed"><p class="p1">22</p>
+                <p class="p2">被关注</p></a>
+            <a href="/user/456744/love"><p class="p1">2233</p>
+                <p class="p2">动态</p></a>
+        </div>
+    </section>
+
+
+    <section class="user_menu">
+        <ul class="menu_item">
+            <li class="mine-func-item">
+                <a class="item" href="#" title="我的书单">
+                    <div class="link_row">
+                        <i class="iconpic book"></i>
+                        <p class="text">我的书单</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+    </section>
+
+
+{% endblock %}
+
+
+
+
+
+
+
